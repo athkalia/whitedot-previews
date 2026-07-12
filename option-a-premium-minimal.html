@@ -1,0 +1,211 @@
+<title>White Dot — Option A · Premium Minimal</title>
+<style>
+  :root{
+    --cream:#FCFBF7; --paper:#F6F2E9; --beige:#D9C3A5; --beige-soft:#EBE1CE;
+    --ink:#1D2433; --ink-60:#5A6070; --line:#E6DFCE; --brown:#6B543B;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--cream);color:var(--ink);font:16px/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+  .display{font-family:"Futura","Century Gothic","Avenir Next","Questrial",ui-sans-serif,sans-serif;letter-spacing:-0.01em}
+  .mono{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--brown)}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  a{color:inherit}
+  :focus-visible{outline:2px solid var(--brown);outline-offset:3px;border-radius:2px}
+
+  /* top ribbon */
+  .ribbon{background:var(--ink);color:#F2EDE2;font-size:.8rem}
+  .ribbon .wrap{display:flex;justify-content:space-between;gap:16px;padding:8px 24px}
+  .ribbon a{text-decoration:none;font-weight:600}
+
+  /* nav */
+  nav{border-bottom:1px solid var(--line);background:var(--cream);position:sticky;top:0;z-index:9}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;padding:18px 24px}
+  .logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+  .logo svg{width:36px;height:36px}
+  .logo b{font-size:1.02rem;letter-spacing:.06em}
+  .logo span{display:block;font-size:.62rem;letter-spacing:.32em;color:var(--ink-60);font-weight:500}
+  .navlinks{display:flex;gap:28px;font-size:.88rem}
+  .navlinks a{text-decoration:none;color:var(--ink-60)}
+  .navlinks a:hover{color:var(--ink)}
+  .btn{display:inline-block;background:var(--ink);color:#fff;text-decoration:none;padding:13px 26px;border-radius:2px;font-weight:600;font-size:.92rem;border:1px solid var(--ink);transition:background .18s,color .18s}
+  .btn:hover{background:transparent;color:var(--ink)}
+  .btn.ghost{background:transparent;color:var(--ink)}
+  .btn.ghost:hover{background:var(--ink);color:#fff}
+
+  /* hero */
+  .hero .wrap{display:grid;grid-template-columns:1.25fr .85fr;gap:64px;padding:96px 24px 84px;align-items:start}
+  .hero h1{font-size:clamp(2.4rem,5.2vw,3.9rem);line-height:1.08;font-weight:500}
+  .hero h1 .dot{display:inline-block;width:.22em;height:.22em;background:var(--beige);border-radius:50%;margin-left:.08em}
+  .hero p.lead{margin:26px 0 34px;max-width:44ch;color:var(--ink-60);font-size:1.06rem}
+  .hero .ctas{display:flex;gap:14px;flex-wrap:wrap}
+  .eyebrow{margin-bottom:22px}
+
+  /* quote card */
+  .card{background:#fff;border:1px solid var(--line);padding:30px;border-radius:3px}
+  .card h3{font-size:1.05rem;margin-bottom:6px}
+  .card p.small{font-size:.83rem;color:var(--ink-60);margin-bottom:18px}
+  .card label{display:block;font-size:.78rem;font-weight:600;margin:14px 0 5px}
+  .card input,.card select{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:2px;background:var(--cream);font:inherit;font-size:.9rem;color:var(--ink)}
+  .card button{width:100%;margin-top:20px;cursor:pointer;font:inherit}
+  .card .tel{display:block;text-align:center;margin-top:14px;font-size:.85rem;color:var(--ink-60)}
+  .card .tel b{color:var(--ink)}
+
+  /* trust hairline row */
+  .trust{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--paper)}
+  .trust .wrap{display:grid;grid-template-columns:repeat(5,1fr);padding:0 24px}
+  .trust div{padding:22px 14px;border-left:1px solid var(--line);font-size:.82rem;line-height:1.45}
+  .trust div:first-child{border-left:none}
+  .trust b{display:block;font-size:.94rem;margin-bottom:2px}
+
+  section.block{padding:88px 0}
+  .sechead{max-width:60ch;margin-bottom:52px}
+  .sechead h2{font-size:clamp(1.7rem,3vw,2.3rem);font-weight:500;line-height:1.15;margin-top:14px}
+
+  /* audience split */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+  .panel{border:1px solid var(--line);background:#fff;padding:42px 38px;border-radius:3px;display:flex;flex-direction:column;gap:0}
+  .panel.tint{background:var(--beige-soft);border-color:var(--beige)}
+  .panel h3{font-size:1.4rem;font-weight:500;margin:16px 0 12px}
+  .panel p{color:var(--ink-60);font-size:.95rem;flex:1}
+  .panel ul{list-style:none;margin:20px 0 28px;flex:1}
+  .panel li{padding:9px 0;border-top:1px solid var(--line);font-size:.92rem}
+  .panel .price{font-size:.85rem;color:var(--brown);margin-bottom:18px}
+  .panel .btn{align-self:flex-start}
+  .ring{width:34px;height:34px}
+
+  /* process — a real sequence */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+  .step{border-top:2px solid var(--beige);padding-top:22px}
+  .step h4{font-size:1.05rem;font-weight:600;margin:10px 0 8px}
+  .step p{font-size:.92rem;color:var(--ink-60)}
+
+  /* coverage */
+  .coverage{background:var(--ink);color:#EFE9DB}
+  .coverage .mono{color:var(--beige)}
+  .coverage h2{color:#fff}
+  .coverage p.note{color:#A9AEBB;max-width:52ch;font-size:.95rem;margin-top:14px}
+  .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:38px}
+  .chip{display:inline-flex;align-items:center;gap:9px;border:1px solid #3A4150;border-radius:100px;padding:9px 18px 9px 14px;font-size:.88rem}
+  .chip i{width:7px;height:7px;border-radius:50%;background:var(--beige)}
+
+  /* review */
+  .review{text-align:center;max-width:720px;margin:0 auto}
+  .stars{color:var(--brown);letter-spacing:.2em;font-size:1.05rem;margin-bottom:22px}
+  .review blockquote{font-size:clamp(1.2rem,2.4vw,1.6rem);line-height:1.45;font-weight:500}
+  .review .attr{margin-top:20px;font-size:.85rem;color:var(--ink-60)}
+  .placeholder{outline:1.5px dashed var(--beige);outline-offset:6px;border-radius:2px}
+  .ph-note{display:inline-block;margin-top:26px;font-size:.75rem;color:var(--brown);background:var(--beige-soft);padding:5px 12px;border-radius:100px}
+
+  footer{border-top:1px solid var(--line);background:var(--paper)}
+  footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;padding:44px 24px;font-size:.85rem;color:var(--ink-60)}
+  footer b{color:var(--ink)}
+
+  @media (max-width:880px){
+    .hero .wrap{grid-template-columns:1fr;gap:44px;padding-top:64px}
+    .trust .wrap{grid-template-columns:1fr 1fr;padding:0}
+    .trust div{border-left:none;border-top:1px solid var(--line)}
+    .split,.steps{grid-template-columns:1fr}
+    .navlinks{display:none}
+  }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto} .btn{transition:none}}
+</style>
+
+<div class="ribbon"><div class="wrap"><span>Communal &amp; office cleaning · <b>North London only</b></span><a href="tel:07500216225">07500 216 225</a></div></div>
+
+<nav><div class="wrap">
+  <a class="logo" href="#">
+    <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3a17 17 0 1 0 12.02 29.02l-4.6-4.6A10.5 10.5 0 1 1 20 9.5c2.9 0 5.52 1.17 7.42 3.08l4.6-4.6A17 17 0 0 0 20 3z" fill="#D9C3A5"/><circle cx="20" cy="20" r="7" fill="#D9C3A5"/></svg>
+    <span style="line-height:1.2"><b class="display">WHITE DOT</b><span>CLEANING SERVICES</span></span>
+  </a>
+  <div class="navlinks"><a href="#blocks">For blocks</a><a href="#plans">Monthly plans</a><a href="#process">How it works</a><a href="#coverage">Coverage</a></div>
+  <a class="btn" href="#quote">Request a site visit</a>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <div>
+    <div class="eyebrow mono">North London · Residential blocks &amp; offices</div>
+    <h1 class="display">Communal areas, cleaned like clockwork<span class="dot" aria-hidden="true"></span></h1>
+    <p class="lead">White Dot keeps residential blocks and offices across North London spotless on a fixed monthly schedule — with the vetting, insurance and reporting that property managers actually check for.</p>
+    <div class="ctas"><a class="btn" href="#quote">Request a free site visit</a><a class="btn ghost" href="#plans">See monthly plans</a></div>
+  </div>
+  <aside class="card" id="quote" aria-label="Quote request">
+    <h3 class="display">Free site visit &amp; quote</h3>
+    <p class="small">Takes 30 seconds. We reply within one working day.</p>
+    <form onsubmit="event.preventDefault();this.querySelector('button').textContent='✓ Request received (demo)'">
+      <label for="a-type">Property type</label>
+      <select id="a-type"><option>Residential block — communal areas</option><option>Office</option><option>Home — monthly plan</option><option>End of tenancy / deep clean</option></select>
+      <label for="a-size">Size</label>
+      <select id="a-size"><option>1–2 floors</option><option>3–5 floors</option><option>6+ floors</option><option>Not sure</option></select>
+      <label for="a-pc">Postcode (North London)</label>
+      <input id="a-pc" placeholder="e.g. N11 2DN">
+      <label for="a-ph">Your phone or email</label>
+      <input id="a-ph" placeholder="So we can arrange the visit">
+      <button class="btn" type="submit">Request the visit</button>
+    </form>
+    <span class="tel">Prefer to talk? <b>07500 216 225</b></span>
+  </aside>
+</div></header>
+
+<div class="trust"><div class="wrap">
+  <div><b>DBS-checked</b>Every cleaner, verified</div>
+  <div><b>£5m cover</b>Public liability insurance</div>
+  <div><b>Employers’ liability</b>Fully insured team</div>
+  <div><b>Vetted staff</b>Trained &amp; supervised</div>
+  <div><b>COSHH aware</b>Safe product handling</div>
+</div></div>
+
+<section class="block" id="blocks"><div class="wrap">
+  <div class="sechead"><span class="mono">Two ways we work</span><h2 class="display">Built for buildings. Priced for households.</h2></div>
+  <div class="split">
+    <div class="panel tint">
+      <svg class="ring" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="15" fill="none" stroke="#6B543B" stroke-width="3"/><circle cx="20" cy="20" r="6" fill="#6B543B"/></svg>
+      <h3 class="display">Property managers &amp; blocks</h3>
+      <p>Lobbies, stairwells, lifts, bin stores and car parks on a contracted schedule — plus maintenance-issue reporting from every visit, so you hear about the broken light before the residents do.</p>
+      <ul><li>Fixed monthly contract, scheduled visits</li><li>Site-specific cleaning specification</li><li>Photo log &amp; issue reporting each visit</li></ul>
+      <div class="price">Quoted per building — always after a free site visit.</div>
+      <a class="btn" href="#quote">Book the site visit</a>
+    </div>
+    <div class="panel">
+      <svg class="ring" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="15" fill="none" stroke="#D9C3A5" stroke-width="3"/><circle cx="20" cy="20" r="6" fill="#D9C3A5"/></svg>
+      <h3 class="display">Homes &amp; offices — monthly plans</h3>
+      <p>The same vetted team, on a plan that repeats itself. One visit or four a month; we bring the products, you stop thinking about it.</p>
+      <ul><li>Home plans from <b>£XX/visit</b>*</li><li>Office plans from <b>£XX/visit</b>*</li><li>Introduction offer for new monthly clients</li></ul>
+      <div class="price">*Example pricing — final figures set with Odysseas.</div>
+      <a class="btn ghost" href="#quote" id="plans">Get a plan price</a>
+    </div>
+  </div>
+</div></section>
+
+<section class="block" id="process" style="padding-top:0"><div class="wrap">
+  <div class="sechead"><span class="mono">How it works</span><h2 class="display">Three steps to a spotless building</h2></div>
+  <div class="steps">
+    <div class="step"><span class="mono">Step 1</span><h4>Free site visit</h4><p>We walk the property with you, note the spec and access, and answer everything on the spot.</p></div>
+    <div class="step"><span class="mono">Step 2</span><h4>Fixed written quote</h4><p>One clear monthly figure. No metering, no surprises, no lock-in games.</p></div>
+    <div class="step"><span class="mono">Step 3</span><h4>Scheduled cleaning</h4><p>Your team arrives on schedule, every time — with a photo log and issue report after each visit.</p></div>
+  </div>
+</div></section>
+
+<section class="block coverage" id="coverage"><div class="wrap">
+  <span class="mono">Coverage</span>
+  <h2 class="display" style="margin-top:14px">North London. That’s the whole point.</h2>
+  <p class="note">We only take on properties we can reach fast and service properly — so we stay local by design. If your building is in North London, you’re in.</p>
+  <div class="chips">
+    <span class="chip"><i></i>N2 East Finchley</span><span class="chip"><i></i>N3 Finchley</span><span class="chip"><i></i>N10 Muswell Hill</span><span class="chip"><i></i>N11 New Southgate</span><span class="chip"><i></i>N12 North Finchley</span><span class="chip"><i></i>N13 Palmers Green</span><span class="chip"><i></i>N14 Southgate</span><span class="chip"><i></i>N22 Wood Green</span><span class="chip"><i></i>EN4 Barnet</span><span class="chip"><i></i>+ neighbouring N postcodes</span>
+  </div>
+</div></section>
+
+<section class="block"><div class="wrap">
+  <div class="review">
+    <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+    <blockquote class="display placeholder">“Your real Google review appears here, word for word, with the reviewer’s first name — seven five-star reviews and counting.”</blockquote>
+    <div class="attr">— Google Business Profile · 7 reviews · 5.0</div>
+    <span class="ph-note">Placeholder — we’ll pull the real reviews verbatim</span>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div><b>White Dot Cleaning Services</b><br>1 Queen Parade, Brownlow Road, London N11 2DN</div>
+  <div><b>07500 216 225</b><br>whitedotcleaners@gmail.com</div>
+  <div><b>North London only</b><br>DBS · £5m public liability · COSHH</div>
+</div></footer>

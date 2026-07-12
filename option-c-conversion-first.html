@@ -1,0 +1,217 @@
+<title>White Dot — Option C · Conversion First</title>
+<style>
+  :root{
+    --beige:#D9C3A5; --beige-deep:#C7AC85; --ink:#14181F; --ink-2:#232936;
+    --cream:#FAF6EE; --white:#fff; --ok:#2F7A4D;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--cream);color:var(--ink);font:16px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+  a{color:inherit}
+  :focus-visible{outline:3px solid var(--ink);outline-offset:3px;border-radius:6px}
+  h1,h2,h3{font-weight:800;letter-spacing:-0.02em}
+
+  nav{position:sticky;top:0;z-index:10;background:rgba(250,246,238,.94);backdrop-filter:blur(8px);border-bottom:1px solid #E8DFCC}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 22px}
+  .logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800;font-size:1.05rem}
+  .logo svg{width:34px;height:34px}
+  .logo small{display:block;font-size:.58rem;letter-spacing:.3em;font-weight:600;color:#6E6least;color:#6E6350}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--ink);color:#fff;text-decoration:none;padding:14px 26px;border-radius:12px;font-weight:700;font-size:.95rem;border:0;cursor:pointer;transition:transform .12s,box-shadow .12s}
+  .btn:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(20,24,31,.18)}
+  .btn.beige{background:var(--beige);color:var(--ink)}
+  .btn.outline{background:transparent;border:2px solid var(--ink);color:var(--ink)}
+
+  /* hero with calculator */
+  .hero{background:var(--beige);border-bottom:1px solid var(--beige-deep)}
+  .hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;padding:74px 22px 78px;align-items:center}
+  .kicker{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:var(--cream);font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:100px;padding:7px 16px}
+  .kicker i{width:8px;height:8px;border-radius:50%;background:var(--cream)}
+  .hero h1{font-size:clamp(2.5rem,5.6vw,4rem);line-height:1.02;margin:24px 0 18px}
+  .hero p.lead{font-size:1.1rem;color:#443A2B;max-width:42ch;margin-bottom:30px}
+  .hero .proof{display:flex;gap:22px;flex-wrap:wrap;font-size:.85rem;font-weight:600;color:#443A2B}
+  .hero .proof span::before{content:"✓ ";color:var(--ink);font-weight:800}
+
+  /* calculator */
+  .calc{background:var(--white);border-radius:20px;box-shadow:0 24px 60px rgba(20,24,31,.22);padding:30px;border:1px solid #EAE2D2}
+  .calc h3{font-size:1.2rem;margin-bottom:4px}
+  .calc .sub{font-size:.82rem;color:#6E6350;margin-bottom:20px}
+  .seg{display:grid;grid-template-columns:1fr 1fr 1fr;background:var(--cream);border-radius:10px;padding:4px;gap:4px;margin-bottom:16px}
+  .seg button{border:0;background:transparent;padding:10px 6px;border-radius:8px;font:inherit;font-weight:700;font-size:.85rem;cursor:pointer;color:#6E6350}
+  .seg button[aria-pressed="true"]{background:var(--ink);color:#fff}
+  .calc label{display:block;font-size:.78rem;font-weight:700;margin:14px 0 6px}
+  .calc select{width:100%;padding:12px;border-radius:10px;border:1.5px solid #E4DAC4;background:var(--cream);font:inherit;font-weight:600}
+  .est{margin-top:22px;background:var(--cream);border-radius:14px;padding:18px 20px;display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap}
+  .est .label{font-size:.78rem;font-weight:700;color:#6E6350;text-transform:uppercase;letter-spacing:.06em}
+  .est .num{font-size:2.1rem;font-weight:800}
+  .est .num small{font-size:.9rem;font-weight:600;color:#6E6350}
+  .calc .fine{font-size:.72rem;color:#8A7B60;margin-top:12px}
+  .calc .btn{width:100%;margin-top:18px}
+  .calc .block-note{display:none;margin-top:22px;background:var(--cream);border-radius:14px;padding:20px;font-size:.92rem;line-height:1.55}
+  .calc.block-mode .block-note{display:block}
+  .calc.block-mode .est,.calc.block-mode label.sizes,.calc.block-mode select,.calc.block-mode .fine{display:none}
+
+  /* trust marquee row */
+  .trustrow{background:var(--ink);color:#D8CDB8}
+  .trustrow .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;padding:18px 22px;font-size:.82rem;font-weight:700}
+  .trustrow span::before{content:"● ";color:var(--beige)}
+
+  section.blk{padding:84px 0}
+  .blk h2{font-size:clamp(1.9rem,3.6vw,2.7rem);margin-bottom:14px}
+  .blk p.intro{color:#584C39;max-width:52ch;margin-bottom:44px}
+
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .card{background:#fff;border-radius:18px;padding:30px;border:1px solid #EAE2D2;display:flex;flex-direction:column}
+  .card .em{width:44px;height:44px;border-radius:12px;background:var(--beige);display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:16px}
+  .card h3{font-size:1.15rem;margin-bottom:8px}
+  .card p{font-size:.92rem;color:#584C39;flex:1}
+  .card .from{margin-top:16px;font-weight:800}
+  .card .from small{font-weight:600;color:#8A7B60}
+  .card.feature{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+  .card.feature p{color:#C9BFAC}
+  .card.feature .from{color:var(--beige)}
+
+  /* reviews */
+  .reviews{background:#fff;border-top:1px solid #EAE2D2;border-bottom:1px solid #EAE2D2}
+  .reviews .row{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .rev{background:var(--cream);border-radius:16px;padding:24px;font-size:.92rem}
+  .rev .stars{color:#A97F3F;font-weight:800;letter-spacing:.15em;margin-bottom:10px}
+  .rev .who{margin-top:14px;font-weight:700;font-size:.8rem;color:#6E6350}
+  .ph{border:1.5px dashed var(--beige-deep)}
+  .ph-note{display:inline-block;margin-top:22px;font-size:.74rem;font-weight:700;color:#8A6D3B;background:var(--cream);border:1.5px dashed #C9A96A;padding:6px 14px;border-radius:100px}
+
+  /* final CTA */
+  .final{background:var(--beige)}
+  .final .wrap{padding:80px 22px;text-align:center}
+  .final h2{font-size:clamp(2rem,4.4vw,3.2rem);max-width:20ch;margin:0 auto 16px}
+  .final p{color:#443A2B;margin-bottom:30px}
+  footer{padding:36px 0;font-size:.85rem;color:#6E6350}
+  footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+  /* sticky mobile CTA */
+  .sticky-cta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:20;background:var(--ink);padding:12px 16px}
+  .sticky-cta a{display:block;text-align:center;background:var(--beige);color:var(--ink);font-weight:800;text-decoration:none;padding:14px;border-radius:12px}
+
+  @media (max-width:900px){
+    .hero .wrap{grid-template-columns:1fr;gap:40px;padding-top:52px}
+    .cards,.reviews .row{grid-template-columns:1fr}
+    .sticky-cta{display:block}
+    body{padding-bottom:74px}
+    .navlinks{display:none}
+  }
+  @media (prefers-reduced-motion:reduce){.btn{transition:none}.btn:hover{transform:none}}
+</style>
+
+<nav><div class="wrap">
+  <a class="logo" href="#">
+    <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3a17 17 0 1 0 12.02 29.02l-4.6-4.6A10.5 10.5 0 1 1 20 9.5c2.9 0 5.52 1.17 7.42 3.08l4.6-4.6A17 17 0 0 0 20 3z" fill="#14181F"/><circle cx="20" cy="20" r="7" fill="#14181F"/></svg>
+    <span>WHITE DOT<small>CLEANING · NORTH LONDON</small></span>
+  </a>
+  <a class="btn" href="tel:07500216225">📞 07500 216 225</a>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <div>
+    <span class="kicker"><i></i>North London only — that’s our patch</span>
+    <h1>Get your cleaning price in 30 seconds.</h1>
+    <p class="lead">Communal areas for residential blocks, and monthly plans for homes and offices. DBS-checked, insured to £5m, and always on schedule.</p>
+    <div class="proof"><span>7 × five-star Google reviews</span><span>Fixed monthly pricing</span><span>Free site visits</span></div>
+  </div>
+  <div class="calc" id="calc">
+    <h3>Instant estimate</h3>
+    <div class="sub">Pick what fits — watch the price update live.</div>
+    <div class="seg" role="group" aria-label="Property type">
+      <button type="button" aria-pressed="true" data-k="home">Home</button>
+      <button type="button" aria-pressed="false" data-k="office">Office</button>
+      <button type="button" aria-pressed="false" data-k="block">Block</button>
+    </div>
+    <label class="sizes" for="c-size">Size</label>
+    <select id="c-size">
+      <option value="0">1–2 bedrooms / small office</option>
+      <option value="1">3–4 bedrooms / medium office</option>
+      <option value="2">5+ bedrooms / large office</option>
+    </select>
+    <label for="c-freq">Visits per month</label>
+    <select id="c-freq">
+      <option value="1">1 visit</option><option value="2" selected>2 visits</option><option value="4">4 visits</option>
+    </select>
+    <div class="est"><span class="label">Estimated from</span><span class="num" id="c-out">£—</span></div>
+    <div class="fine">Example pricing for the preview — Odysseas sets the real numbers. Final price always confirmed before booking.</div>
+    <div class="block-note"><b>Blocks are quoted in person — and that’s a good thing.</b><br>Every building is different, so we price communal areas after a free 20-minute site visit. You get one fixed monthly figure with a written spec.</div>
+    <button class="btn" type="button" onclick="this.textContent='✓ Request received (demo)'">Request a free site visit</button>
+  </div>
+</div></header>
+
+<div class="trustrow"><div class="wrap">
+  <span>DBS-checked team</span><span>£5m public liability</span><span>Employers’ liability</span><span>Vetted staff</span><span>COSHH awareness</span>
+</div></div>
+
+<section class="blk"><div class="wrap">
+  <h2>What we clean</h2>
+  <p class="intro">One speciality, two plans, and a handful of one-offs. If it’s in North London, we’ve probably mopped something like it.</p>
+  <div class="cards">
+    <div class="card feature">
+      <div class="em">🏢</div><h3>Communal areas — blocks</h3>
+      <p>Lobbies, stairwells, lifts and bin stores on a fixed contract. Photo log and maintenance-issue reporting after every visit — property managers’ favourite part.</p>
+      <div class="from">Quoted after a free site visit</div>
+    </div>
+    <div class="card">
+      <div class="em">🏠</div><h3>Home monthly plans</h3>
+      <p>The same vetted team on a repeating schedule. Products included. Intro offer for new monthly clients.</p>
+      <div class="from">from £XX/visit <small>· example</small></div>
+    </div>
+    <div class="card">
+      <div class="em">💼</div><h3>Office monthly plans</h3>
+      <p>Client-ready workspaces, cleaned out of hours where needed, invoiced monthly like clockwork.</p>
+      <div class="from">from £XX/visit <small>· example</small></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="blk reviews"><div class="wrap">
+  <h2>Rated 5.0 on Google</h2>
+  <p class="intro">Seven reviews, seven five-stars. The real ones get pulled in here word for word.</p>
+  <div class="row">
+    <div class="rev ph"><div class="stars">★★★★★</div>“Real review #1 — verbatim from your Google profile.”<div class="who">FIRST NAME · GOOGLE</div></div>
+    <div class="rev ph"><div class="stars">★★★★★</div>“Real review #2 — verbatim from your Google profile.”<div class="who">FIRST NAME · GOOGLE</div></div>
+    <div class="rev ph"><div class="stars">★★★★★</div>“Real review #3 — verbatim from your Google profile.”<div class="who">FIRST NAME · GOOGLE</div></div>
+  </div>
+  <span class="ph-note">Placeholders — replaced with the genuine reviews at build</span>
+</div></section>
+
+<section class="final"><div class="wrap">
+  <h2>Your building could be the next five-star review.</h2>
+  <p>Free site visit · fixed monthly quote · North London only</p>
+  <a class="btn" href="#calc">Get my estimate</a>&nbsp;&nbsp;<a class="btn outline" href="tel:07500216225">Call Odysseas</a>
+</div></section>
+
+<footer><div class="wrap">
+  <div><b>White Dot Cleaning Services</b> · 1 Queen Parade, Brownlow Road, N11 2DN</div>
+  <div>07500 216 225 · whitedotcleaners@gmail.com · North London only</div>
+</div></footer>
+
+<div class="sticky-cta"><a href="#calc">Get my instant estimate</a></div>
+
+<script>
+(function(){
+  // Example pricing matrix (placeholder): base per visit by [type][size], multiplied by visits, with volume discount
+  var base={home:[45,65,90],office:[55,80,120]};
+  var calc=document.getElementById('calc'),seg=calc.querySelectorAll('.seg button');
+  var size=document.getElementById('c-size'),freq=document.getElementById('c-freq'),out=document.getElementById('c-out');
+  var type='home';
+  function upd(){
+    if(type==='block'){calc.classList.add('block-mode');return}
+    calc.classList.remove('block-mode');
+    var per=base[type][+size.value];
+    var v=+freq.value;
+    if(v===4)per=Math.round(per*0.9); // frequency discount
+    out.innerHTML='£'+per+'<small>/visit</small>';
+  }
+  seg.forEach(function(b){b.addEventListener('click',function(){
+    seg.forEach(function(x){x.setAttribute('aria-pressed','false')});
+    b.setAttribute('aria-pressed','true');type=b.dataset.k;upd();
+  })});
+  size.addEventListener('change',upd);freq.addEventListener('change',upd);
+  upd();
+})();
+</script>

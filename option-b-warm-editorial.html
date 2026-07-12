@@ -1,0 +1,159 @@
+<title>White Dot — Option B · Warm Editorial</title>
+<style>
+  :root{
+    --parchment:#F3EADA; --sand:#E7D9C0; --beige:#D9C3A5; --deep:#3A2F22; --deep-2:#57493A;
+    --cream:#FBF7EF; --rule:#CDBB9C;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--parchment);color:var(--deep);font:16.5px/1.7 Georgia,"Iowan Old Style","Palatino Linotype",serif}
+  .sans{font-family:ui-sans-serif,system-ui,"Segoe UI",sans-serif}
+  .eyebrow{font-family:ui-sans-serif,system-ui,sans-serif;font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--deep-2);font-weight:600}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 26px}
+  a{color:inherit}
+  :focus-visible{outline:2px solid var(--deep);outline-offset:3px}
+
+  header.mast{padding:26px 0 0;border-bottom:3px double var(--rule)}
+  .mast .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;padding-bottom:22px}
+  .logo{display:flex;align-items:center;gap:13px;text-decoration:none}
+  .logo svg{width:42px;height:42px}
+  .logo .word{line-height:1.15}
+  .logo .word b{font-size:1.25rem;letter-spacing:.04em;font-weight:600}
+  .logo .word span{display:block;font-family:ui-sans-serif,system-ui,sans-serif;font-size:.6rem;letter-spacing:.34em;color:var(--deep-2)}
+  .mast .tel{text-align:right;font-size:.9rem;line-height:1.5}
+  .mast .tel b{font-size:1.1rem}
+
+  /* neighbourhood ledger band */
+  .ledger{border-bottom:1px solid var(--rule);background:var(--sand);overflow:hidden}
+  .ledger .inner{display:flex;gap:34px;white-space:nowrap;padding:11px 26px;font-style:italic;font-size:.92rem;color:var(--deep-2);animation:drift 46s linear infinite;width:max-content}
+  .ledger i{font-style:normal;color:var(--beige)}
+  @keyframes drift{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @media (prefers-reduced-motion:reduce){.ledger .inner{animation:none}}
+
+  /* hero: review-led */
+  .hero{padding:92px 0 76px;text-align:center}
+  .hero .stars{color:#A97F3F;letter-spacing:.28em;font-size:1.15rem}
+  .hero h1{font-size:clamp(2.3rem,5.4vw,4rem);line-height:1.14;font-weight:500;max-width:21ch;margin:26px auto 0;font-style:italic}
+  .hero h1 em{font-style:normal}
+  .hero .who{margin-top:26px;font-size:.92rem;color:var(--deep-2)}
+  .hero .who b{font-family:ui-sans-serif,system-ui,sans-serif;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase}
+  .hero .ctas{margin-top:44px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+  .btn{display:inline-block;font-family:ui-sans-serif,system-ui,sans-serif;font-weight:600;font-size:.95rem;text-decoration:none;padding:15px 30px;border-radius:100px;background:var(--deep);color:var(--cream);border:1.5px solid var(--deep);transition:opacity .18s}
+  .btn:hover{opacity:.85}
+  .btn.ghost{background:transparent;color:var(--deep)}
+  .ph-note{display:inline-block;margin-top:24px;font-family:ui-sans-serif,system-ui,sans-serif;font-size:.72rem;letter-spacing:.06em;color:#8A6D3B;border:1px dashed #C9A96A;padding:5px 14px;border-radius:100px}
+
+  /* story section with photo frames */
+  .story{background:var(--cream);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:90px 0}
+  .story .wrap{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+  .story h2{font-size:clamp(1.9rem,3.4vw,2.6rem);line-height:1.2;font-weight:500;margin:18px 0 22px}
+  .story p{color:var(--deep-2);margin-bottom:16px}
+  .frames{position:relative;min-height:420px}
+  .frame{position:absolute;background:var(--sand);border:1px solid var(--rule);box-shadow:0 18px 40px rgba(58,47,34,.14);display:flex;align-items:center;justify-content:center;text-align:center;padding:18px;font-family:ui-sans-serif,system-ui,sans-serif;font-size:.78rem;color:var(--deep-2)}
+  .frame.one{width:62%;height:66%;left:0;top:0;transform:rotate(-2deg)}
+  .frame.two{width:56%;height:58%;right:0;bottom:0;transform:rotate(1.6deg);background:var(--beige)}
+  .frame .tag{position:absolute;top:12px;left:12px;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:#8A6D3B}
+
+  /* services as a table of contents */
+  .toc{padding:90px 0}
+  .toc h2{font-size:clamp(1.9rem,3.4vw,2.6rem);font-weight:500;margin-top:16px;max-width:24ch}
+  .toc ol{list-style:none;margin-top:48px;border-top:1px solid var(--rule)}
+  .toc li{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:baseline;padding:22px 4px;border-bottom:1px solid var(--rule);font-size:1.25rem}
+  .toc li .desc{display:block;font-size:.9rem;color:var(--deep-2);margin-top:4px;font-style:italic}
+  .toc li .lead-dots{color:var(--deep-2);font-family:ui-sans-serif,system-ui,sans-serif;font-size:.8rem;white-space:nowrap}
+  .toc li.hero-item{font-weight:700}
+  .toc li.hero-item .badge{font-family:ui-sans-serif,system-ui,sans-serif;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;background:var(--deep);color:var(--cream);border-radius:100px;padding:4px 12px;margin-left:12px;vertical-align:middle}
+
+  /* credentials strip */
+  .creds{background:var(--deep);color:#EFE4D0;padding:74px 0}
+  .creds .eyebrow{color:var(--beige)}
+  .creds h2{font-size:clamp(1.8rem,3vw,2.4rem);font-weight:500;color:var(--cream);margin-top:16px;max-width:26ch}
+  .creds .grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:#57493A;margin-top:48px;border:1px solid #57493A}
+  .creds .cell{background:var(--deep);padding:26px 20px;font-family:ui-sans-serif,system-ui,sans-serif;font-size:.82rem;line-height:1.5;color:#C9BBA4}
+  .creds .cell b{display:block;color:var(--cream);font-size:.95rem;margin-bottom:4px}
+
+  .invite{text-align:center;padding:100px 26px}
+  .invite h2{font-size:clamp(2rem,4vw,3rem);font-weight:500;font-style:italic;max-width:22ch;margin:18px auto 30px}
+  footer{border-top:3px double var(--rule);padding:40px 0;font-size:.88rem;color:var(--deep-2)}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:18px}
+  footer b{color:var(--deep)}
+
+  @media (max-width:860px){
+    .story .wrap{grid-template-columns:1fr;gap:48px}
+    .frames{min-height:340px}
+    .creds .grid{grid-template-columns:1fr 1fr}
+    .toc li{font-size:1.05rem}
+    .toc li .lead-dots{display:none}
+  }
+</style>
+
+<header class="mast"><div class="wrap">
+  <a class="logo" href="#">
+    <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3a17 17 0 1 0 12.02 29.02l-4.6-4.6A10.5 10.5 0 1 1 20 9.5c2.9 0 5.52 1.17 7.42 3.08l4.6-4.6A17 17 0 0 0 20 3z" fill="#A97F3F"/><circle cx="20" cy="20" r="7" fill="#A97F3F"/></svg>
+    <span class="word"><b>White Dot</b><span>CLEANING SERVICES · EST. NORTH LONDON</span></span>
+  </a>
+  <div class="tel">Speak to Odysseas<br><b>07500 216 225</b></div>
+</div></header>
+
+<div class="ledger" aria-hidden="true"><div class="inner">
+  <span>Muswell Hill</span><i>●</i><span>New Southgate</span><i>●</i><span>Finchley</span><i>●</i><span>Palmers Green</span><i>●</i><span>Wood Green</span><i>●</i><span>Southgate</span><i>●</i><span>Bounds Green</span><i>●</i><span>Barnet</span><i>●</i><span>Arnos Grove</span><i>●</i><span>Winchmore Hill</span><i>●</i>
+  <span>Muswell Hill</span><i>●</i><span>New Southgate</span><i>●</i><span>Finchley</span><i>●</i><span>Palmers Green</span><i>●</i><span>Wood Green</span><i>●</i><span>Southgate</span><i>●</i><span>Bounds Green</span><i>●</i><span>Barnet</span><i>●</i><span>Arnos Grove</span><i>●</i><span>Winchmore Hill</span><i>●</i>
+</div></div>
+
+<section class="hero"><div class="wrap">
+  <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+  <h1>“Your best Google review sits right here, <em>word for word</em> — because nothing we write about ourselves beats it.”</h1>
+  <div class="who"><b>Google Reviews</b> · 7 five-star reviews · North London</div>
+  <div class="ctas"><a class="btn" href="#visit">Request a free site visit</a><a class="btn ghost" href="#services">What we clean</a></div>
+  <br><span class="ph-note">Placeholder — the real review goes here verbatim</span>
+</div></section>
+
+<section class="story"><div class="wrap">
+  <div>
+    <span class="eyebrow">The local firm</span>
+    <h2>A cleaning company your building can actually rely on</h2>
+    <p>White Dot looks after the shared spaces where first impressions are made — lobbies, stairwells, lifts and bin stores — for residential blocks and offices across North London.</p>
+    <p>We work on fixed monthly contracts with a written specification, and we report maintenance issues we spot on every visit. Property managers hear about the flickering light from us, not from a resident’s complaint.</p>
+    <p><b>Homes and offices</b> join the same round on simple monthly plans, from £XX a visit<span class="sans" style="font-size:.8rem"> (example pricing)</span> — with an introduction offer for new monthly clients.</p>
+  </div>
+  <div class="frames" aria-label="Photo placeholders">
+    <div class="frame one"><span class="tag">Before / After</span>Odysseas’s real before-and-after photo goes here</div>
+    <div class="frame two"><span class="tag">On site</span>Team photo — a real person, not stock</div>
+  </div>
+</div></section>
+
+<section class="toc" id="services"><div class="wrap">
+  <span class="eyebrow">Table of contents</span>
+  <h2>Everything we clean, in order of what we do best</h2>
+  <ol>
+    <li class="hero-item"><span>Communal areas — residential blocks<span class="badge">Our speciality</span><span class="desc">Contracted monthly schedule, site spec, photo log, issue reporting. Quoted after a free site visit.</span></span><span class="lead-dots">quote only</span></li>
+    <li><span>Office cleaning — monthly plans<span class="desc">Regular visits that keep the workplace client-ready.</span></span><span class="lead-dots">from £XX*</span></li>
+    <li><span>Home cleaning — monthly plans<span class="desc">The same vetted team, on a schedule that repeats itself.</span></span><span class="lead-dots">from £XX*</span></li>
+    <li><span>End of tenancy<span class="desc">Deposit-grade cleaning, checked against agency checklists.</span></span><span class="lead-dots">on request</span></li>
+    <li><span>Deep &amp; post-construction cleans<span class="desc">One-off resets after builders, refurbishments or long tenancies.</span></span><span class="lead-dots">on request</span></li>
+  </ol>
+  <p class="sans" style="font-size:.78rem;color:var(--deep-2);margin-top:14px">*Example pricing — final figures to be confirmed.</p>
+</div></section>
+
+<section class="creds"><div class="wrap">
+  <span class="eyebrow">Why property managers say yes</span>
+  <h2>The paperwork is as clean as the lobbies</h2>
+  <div class="grid">
+    <div class="cell"><b>DBS-checked</b>Every member of the team</div>
+    <div class="cell"><b>£5m public liability</b>Insurance certificate on request</div>
+    <div class="cell"><b>Employers’ liability</b>Fully covered workforce</div>
+    <div class="cell"><b>Vetted &amp; trained</b>Supervised, consistent crew</div>
+    <div class="cell"><b>COSHH awareness</b>Safe handling, safe products</div>
+  </div>
+</div></section>
+
+<section class="invite" id="visit">
+  <span class="eyebrow">No obligation</span>
+  <h2>Walk us through your building. We’ll take it from there.</h2>
+  <a class="btn" href="tel:07500216225">Call 07500 216 225</a>&nbsp;&nbsp;<a class="btn ghost" href="mailto:whitedotcleaners@gmail.com">Email for a site visit</a>
+</section>
+
+<footer><div class="wrap">
+  <div><b>White Dot Cleaning Services</b> — 1 Queen Parade, Brownlow Road, London N11 2DN</div>
+  <div><b>North London only</b> · 07500 216 225 · whitedotcleaners@gmail.com</div>
+</div></footer>
