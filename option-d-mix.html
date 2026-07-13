@@ -266,16 +266,17 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script>
 (function(){
-  var map=L.map('covmap',{scrollWheelZoom:false,zoomControl:false,attributionControl:true})
-    .setView([51.586,-0.135],12);
+  var map=L.map('covmap',{scrollWheelZoom:false,zoomControl:false,attributionControl:true});
   L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
     {maxZoom:18,attribution:'&copy; OpenStreetMap contributors &copy; CARTO'}).addTo(map);
   // Brand teardrop pin with white dot + label chip, matching Odysseas's reference graphic
+  var pts=[];
   function pin(name,lat,lng){
     var icon=L.divIcon({className:'wd-pin',iconSize:[36,44],iconAnchor:[18,44],html:
       '<svg width="36" height="44" viewBox="0 0 36 44"><path d="M18 1C9 1 2 8 2 17c0 12 16 26 16 26s16-14 16-26C34 8 27 1 18 1z" fill="#A9825F"/><circle cx="18" cy="16.5" r="6.5" fill="#fff"/></svg>'+
       '<span class="lbl">'+name+'</span>'});
     L.marker([lat,lng],{icon:icon,keyboard:false}).addTo(map);
+    pts.push([lat,lng]);
   }
   pin('Enfield',51.652,-0.081);
   pin('Barnet',51.653,-0.200);
@@ -287,6 +288,7 @@
   pin('Hampstead',51.556,-0.178);
   pin('Camden',51.539,-0.143);
   pin('Islington',51.536,-0.103);
+  map.fitBounds(pts,{padding:[70,50]});
 })();
 </script>
 </body>
