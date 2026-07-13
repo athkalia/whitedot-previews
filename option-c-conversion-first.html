@@ -76,6 +76,12 @@
   .card.feature p{color:#C9BFAC}
   .card.feature .from{color:var(--beige)}
 
+  /* extra services strip */
+  .more{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:20px}
+  .mini{background:var(--cream);border:1px solid #EAE2D2;border-radius:14px;padding:18px 20px;font-size:.88rem}
+  .mini b{display:block;margin-bottom:4px}
+  .mini span{color:#584C39;font-size:.82rem}
+
   /* reviews */
   .reviews{background:#fff;border-top:1px solid #EAE2D2;border-bottom:1px solid #EAE2D2}
   .reviews .row{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
@@ -100,6 +106,7 @@
   @media (max-width:900px){
     .hero .wrap{grid-template-columns:1fr;gap:40px;padding-top:52px}
     .cards,.reviews .row{grid-template-columns:1fr}
+    .more{grid-template-columns:1fr 1fr}
     .sticky-cta{display:block}
     body{padding-bottom:74px}
     .navlinks{display:none}
@@ -172,6 +179,12 @@
       <p>Client-ready workspaces, cleaned out of hours where needed, invoiced monthly like clockwork.</p>
       <div class="from">from £XX/visit <small>· example</small></div>
     </div>
+  </div>
+  <div class="more">
+    <div class="mini"><b>End of tenancy</b><span>Deposit-grade, agency-checklist cleans</span></div>
+    <div class="mini"><b>Deep cleaning</b><span>One-off resets, top to bottom</span></div>
+    <div class="mini"><b>Post-construction</b><span>Dust-free handover after builders</span></div>
+    <div class="mini"><b>Maintenance reporting</b><span>Issues flagged on every block visit</span></div>
   </div>
 </div></section>
 
