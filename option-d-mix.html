@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>White Dot — Option D · The Mix (A content × C graphics)</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 <style>
   :root{
     --beige:#D9C3A5; --beige-deep:#C7AC85; --ink:#14181F; --ink-2:#232936;
@@ -88,13 +89,14 @@
   .step h4{font-size:1.05rem;font-weight:800;margin-bottom:8px}
   .step p{font-size:.92rem;color:var(--muted)}
 
-  /* coverage — A's postcode chips on C's dark ground */
+  /* coverage — interactive map on C's dark ground */
   .coverage{background:var(--ink);color:#EFE9DB}
   .coverage h2{color:#fff}
   .coverage p.intro{color:#A9AEBB}
-  .chips{display:flex;flex-wrap:wrap;gap:10px}
-  .chip{display:inline-flex;align-items:center;gap:9px;border:1px solid #3A4150;border-radius:100px;padding:9px 18px 9px 14px;font-size:.88rem;font-weight:600}
-  .chip i{width:7px;height:7px;border-radius:50%;background:var(--beige)}
+  #covmap{height:420px;border-radius:20px;border:1px solid #3A4150;box-shadow:0 24px 60px rgba(0,0,0,.35)}
+  .map-caption{margin-top:16px;font-size:.85rem;color:#A9AEBB;font-weight:600}
+  .map-caption b{color:var(--beige)}
+  .leaflet-container{font:inherit}
 
   /* review — A's single quote, C's card treatment */
   .review{max-width:760px;margin:0 auto;text-align:center;background:var(--white);border:1.5px dashed var(--beige-deep);border-radius:20px;padding:44px 34px}
@@ -216,9 +218,8 @@
 <section class="blk coverage" id="coverage"><div class="wrap">
   <h2>North London. That’s the whole point.</h2>
   <p class="intro">We only take on properties we can reach fast and service properly — so we stay local by design. If your building is in North London, you’re in.</p>
-  <div class="chips">
-    <span class="chip"><i></i>N2 East Finchley</span><span class="chip"><i></i>N3 Finchley</span><span class="chip"><i></i>N10 Muswell Hill</span><span class="chip"><i></i>N11 New Southgate</span><span class="chip"><i></i>N12 North Finchley</span><span class="chip"><i></i>N13 Palmers Green</span><span class="chip"><i></i>N14 Southgate</span><span class="chip"><i></i>N22 Wood Green</span><span class="chip"><i></i>EN4 Barnet</span><span class="chip"><i></i>+ neighbouring N postcodes</span>
-  </div>
+  <div id="covmap" aria-label="Map of the White Dot coverage area in North London"></div>
+  <p class="map-caption">Shaded area = our patch: <b>Finchley · Muswell Hill · New Southgate · Palmers Green · Southgate · Wood Green · Barnet</b> and the neighbouring N postcodes. The dot is us — N11.</p>
 </div></section>
 
 <section class="blk"><div class="wrap">
@@ -242,5 +243,29 @@
 </div></footer>
 
 <div class="sticky-cta"><a href="#quote">Request a free site visit</a></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script>
+(function(){
+  var map=L.map('covmap',{scrollWheelZoom:false,attributionControl:true}).setView([51.614,-0.135],12);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:18,attribution:'&copy; OpenStreetMap contributors'}).addTo(map);
+  // Rough White Dot coverage polygon — North London N postcodes + EN4 fringe
+  var area=[
+    [51.665,-0.175],  // High Barnet
+    [51.652,-0.128],  // EN4 New Barnet
+    [51.642,-0.095],  // N21 Winchmore Hill
+    [51.618,-0.082],  // N13/N9 edge
+    [51.596,-0.090],  // N22 Wood Green east
+    [51.576,-0.120],  // N8 Hornsey edge
+    [51.578,-0.160],  // N10/N6 Highgate edge
+    [51.588,-0.195],  // N2 East Finchley west
+    [51.610,-0.215],  // N3 Finchley west
+    [51.640,-0.205]   // Mill Hill East fringe
+  ];
+  L.polygon(area,{color:'#14181F',weight:2,fillColor:'#D9C3A5',fillOpacity:.38}).addTo(map);
+  L.circleMarker([51.6135,-0.1330],{radius:9,color:'#14181F',weight:3,fillColor:'#D9C3A5',fillOpacity:1})
+    .addTo(map).bindPopup('<b>White Dot Cleaning</b><br>1 Queen Parade, Brownlow Rd, N11');
+})();
+</script>
 </body>
 </html>
