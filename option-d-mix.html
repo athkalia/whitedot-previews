@@ -4,7 +4,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>White Dot — Option D · The Mix (A content × C graphics)</title>
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 <style>
   :root{
     --beige:#D9C3A5; --beige-deep:#C7AC85; --ink:#14181F; --ink-2:#232936;
@@ -89,24 +88,13 @@
   .step h4{font-size:1.05rem;font-weight:800;margin-bottom:8px}
   .step p{font-size:.92rem;color:var(--muted)}
 
-  /* coverage — branded beige map (per Odysseas's reference graphic) */
+  /* coverage — static branded map image */
   .coverage{background:var(--ink);color:#EFE9DB}
   .coverage h2{color:#fff}
   .coverage p.intro{color:#A9AEBB}
-  .mapframe{position:relative;border-radius:20px;overflow:hidden;border:1px solid #3A4150;box-shadow:0 24px 60px rgba(0,0,0,.35)}
-  #covmap{height:520px;background:#F0E9DC}
-  .leaflet-container{font:inherit}
-  .leaflet-tile-pane{filter:sepia(.45) saturate(.5) brightness(1.05) contrast(.92)}
-  .wd-pin svg{display:block;filter:drop-shadow(0 3px 4px rgba(58,47,34,.35))}
-  .wd-pin .lbl{position:absolute;top:44px;left:50%;transform:translateX(-50%);background:#fff;color:#3A2F22;font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:5px 10px;border-radius:5px;white-space:nowrap;box-shadow:0 2px 8px rgba(58,47,34,.25)}
-  .map-legend{position:absolute;z-index:500;left:16px;bottom:52px;background:rgba(255,255,255,.96);border-radius:14px;padding:16px 18px;max-width:230px;box-shadow:0 10px 30px rgba(58,47,34,.25);color:#3A2F22}
-  .map-legend .head{display:flex;gap:10px;align-items:flex-start;font-weight:700;font-size:.82rem;line-height:1.4;padding-bottom:10px;border-bottom:1px solid #E4DAC4;margin-bottom:10px}
-  .map-legend .row{display:flex;gap:10px;align-items:center;font-size:.78rem;font-weight:600;padding:4px 0;color:#57493A}
-  .map-legend svg{flex:none;width:18px;height:18px;stroke:#A9825F;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-  .compass{position:absolute;z-index:500;left:16px;bottom:8px;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.96);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:11px;color:#3A2F22;box-shadow:0 2px 8px rgba(58,47,34,.25)}
+  .covmap-img{display:block;width:100%;height:auto;border-radius:20px;border:1px solid #3A4150;box-shadow:0 24px 60px rgba(0,0,0,.35)}
   .map-caption{margin-top:16px;font-size:.85rem;color:#A9AEBB;font-weight:600}
   .map-caption b{color:var(--beige)}
-  @media (max-width:600px){.map-legend{max-width:180px;padding:12px 14px;left:10px;bottom:46px}.map-legend .head{font-size:.74rem}.map-legend .row{font-size:.7rem}#covmap{height:460px}}
 
   /* review — A's single quote, C's card treatment */
   .review{max-width:760px;margin:0 auto;text-align:center;background:var(--white);border:1.5px dashed var(--beige-deep);border-radius:20px;padding:44px 34px}
@@ -228,17 +216,8 @@
 <section class="blk coverage" id="coverage"><div class="wrap">
   <h2>North London. That’s the whole point.</h2>
   <p class="intro">We only take on properties we can reach fast and service properly — so we stay local by design. If your building is in North London, you’re in.</p>
-  <div class="mapframe">
-    <div id="covmap" aria-label="Map of the White Dot coverage area in North London"></div>
-    <div class="map-legend">
-      <div class="head"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>Proudly supporting properties across North London.</div>
-      <div class="row"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>Trusted Local Experts</div>
-      <div class="row"><svg viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="M11 12L20 3M16 7l3 3M18 5l2 2"/></svg>Proactive Property Care</div>
-      <div class="row"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg>Attention to Detail</div>
-    </div>
-    <div class="compass" aria-hidden="true">N</div>
-  </div>
-  <p class="map-caption">Pins mark our patch — <b>Enfield · Barnet · Whetstone · Finchley · Muswell Hill · Highgate · Crouch End · Hampstead · Camden · Islington</b> and everywhere in between.</p>
+  <img class="covmap-img" src="coverage-map.jpg" alt="Map of White Dot Cleaning's North London coverage area, with pins on Potters Bar, Barnet, Enfield, Whetstone, Finchley, Muswell Hill, Crouch End, Highgate, Tottenham, Walthamstow and Hampstead" width="1200" height="1453">
+  <p class="map-caption">Pins mark our patch — <b>Potters Bar · Barnet · Enfield · Whetstone · Finchley · Muswell Hill · Crouch End · Highgate · Tottenham · Walthamstow · Hampstead</b> and everywhere in between.</p>
 </div></section>
 
 <section class="blk"><div class="wrap">
@@ -262,34 +241,5 @@
 </div></footer>
 
 <div class="sticky-cta"><a href="#quote">Request a free site visit</a></div>
-
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-<script>
-(function(){
-  var map=L.map('covmap',{scrollWheelZoom:false,zoomControl:false,attributionControl:true});
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
-    {maxZoom:18,attribution:'&copy; OpenStreetMap contributors &copy; CARTO'}).addTo(map);
-  // Brand teardrop pin with white dot + label chip, matching Odysseas's reference graphic
-  var pts=[];
-  function pin(name,lat,lng){
-    var icon=L.divIcon({className:'wd-pin',iconSize:[36,44],iconAnchor:[18,44],html:
-      '<svg width="36" height="44" viewBox="0 0 36 44"><path d="M18 1C9 1 2 8 2 17c0 12 16 26 16 26s16-14 16-26C34 8 27 1 18 1z" fill="#A9825F"/><circle cx="18" cy="16.5" r="6.5" fill="#fff"/></svg>'+
-      '<span class="lbl">'+name+'</span>'});
-    L.marker([lat,lng],{icon:icon,keyboard:false}).addTo(map);
-    pts.push([lat,lng]);
-  }
-  pin('Enfield',51.652,-0.081);
-  pin('Barnet',51.653,-0.200);
-  pin('Whetstone',51.630,-0.171);
-  pin('Finchley',51.599,-0.187);
-  pin('Muswell Hill',51.590,-0.144);
-  pin('Highgate',51.571,-0.146);
-  pin('Crouch End',51.578,-0.121);
-  pin('Hampstead',51.556,-0.178);
-  pin('Camden',51.539,-0.143);
-  pin('Islington',51.536,-0.103);
-  map.fitBounds(pts,{padding:[70,50]});
-})();
-</script>
 </body>
 </html>
