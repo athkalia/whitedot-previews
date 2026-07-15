@@ -18,16 +18,19 @@
   h1,h2,h3{font-weight:800;letter-spacing:-0.02em}
   .kicker{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:var(--cream);font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:100px;padding:7px 16px}
   .kicker i{width:8px;height:8px;border-radius:50%;background:var(--cream)}
+  .kicker.lt{background:var(--beige);color:var(--ink)}
+  .kicker.lt i{background:var(--ink)}
   .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--ink);color:#fff;text-decoration:none;padding:14px 26px;border-radius:12px;font-weight:700;font-size:.95rem;border:0;cursor:pointer;transition:transform .12s,box-shadow .12s}
   .btn:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(20,24,31,.18)}
   .btn.outline{background:transparent;border:2px solid var(--ink);color:var(--ink)}
+  .btn.gold{background:var(--beige);color:var(--ink)}
 
   nav{position:sticky;top:0;z-index:10;background:rgba(250,246,238,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
   nav .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 22px}
   .logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800;font-size:1.05rem}
   .logo svg{width:34px;height:34px}
   .logo small{display:block;font-size:.58rem;letter-spacing:.3em;font-weight:600;color:var(--soft)}
-  .navlinks{display:flex;gap:24px;font-size:.88rem;font-weight:600}
+  .navlinks{display:flex;gap:20px;font-size:.86rem;font-weight:600}
   .navlinks a{text-decoration:none;color:var(--soft)}
   .navlinks a:hover{color:var(--ink)}
 
@@ -55,40 +58,67 @@
   .trustrow span::before{content:"● ";color:var(--beige)}
 
   section.blk{padding:84px 0}
-  .blk h2{font-size:clamp(1.9rem,3.6vw,2.7rem);margin-bottom:14px}
-  .blk p.intro{color:var(--muted);max-width:52ch;margin-bottom:44px}
+  .blk h2{font-size:clamp(1.9rem,3.6vw,2.7rem);margin:14px 0 14px}
+  .blk p.intro{color:var(--muted);max-width:56ch;margin-bottom:44px}
 
-  /* audience split — A's two panels, C's card style */
-  .split{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-  .panel{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:34px 30px;display:flex;flex-direction:column}
-  .panel.feature{background:var(--ink);color:var(--cream);border-color:var(--ink)}
-  .panel .em{width:44px;height:44px;border-radius:12px;background:var(--beige);display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:16px}
-  .panel h3{font-size:1.3rem;margin-bottom:10px}
-  .panel p{font-size:.95rem;color:var(--muted)}
-  .panel.feature p{color:#C9BFAC}
-  .panel ul{list-style:none;margin:18px 0 22px;flex:1}
-  .panel li{padding:9px 0;border-top:1px solid var(--line);font-size:.92rem}
-  .panel.feature li{border-top-color:#2E3542}
-  .panel .price{font-size:.85rem;font-weight:700;color:var(--beige-deep);margin-bottom:18px}
-  .panel.feature .price{color:var(--beige)}
-  .panel .btn{align-self:flex-start}
-  .panel.feature .btn{background:var(--beige);color:var(--ink)}
+  /* ============ SECTION 1 — communal (dark feature) ============ */
+  .communal{background:var(--ink);color:var(--cream)}
+  .communal h2{color:#fff}
+  .communal p.intro{color:#B7BCC8}
+  .comgrid{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:stretch}
+  .comcard{background:var(--ink-2);border:1px solid #313949;border-radius:18px;padding:32px 30px}
+  .comcard h3{font-size:1.25rem;margin-bottom:14px;color:#fff}
+  .comcard ul{list-style:none}
+  .comcard li{padding:11px 0;border-top:1px solid #313949;font-size:.94rem;color:#D5CDBC}
+  .comcard li b{color:#fff}
+  .comcard li::before{content:"✓  ";color:var(--beige);font-weight:800}
+  .maint{background:var(--beige);color:var(--ink);border:0;display:flex;flex-direction:column}
+  .maint h3{color:var(--ink)}
+  .maint p{font-size:.95rem;color:#443A2B;margin-bottom:14px}
+  .maint .ex{background:rgba(255,255,255,.55);border-radius:12px;padding:14px 16px;font-size:.88rem;font-weight:600;color:#3A2F22;margin-bottom:10px}
+  .maint .ex b{display:block;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:#7A6647;margin-bottom:4px}
+  .maint .btn{margin-top:auto;align-self:flex-start}
+  .comfoot{margin-top:22px;display:flex;gap:14px;align-items:center;flex-wrap:wrap;font-size:.88rem;color:#B7BCC8;font-weight:600}
 
-  /* all services — A's grid, C's mini-card style */
+  /* ============ SECTION 2 — plans + calculator ============ */
+  .plansgrid{display:grid;grid-template-columns:.95fr 1.05fr;gap:22px;align-items:start}
+  .plan{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:26px 26px;margin-bottom:14px}
+  .plan .em{width:44px;height:44px;border-radius:12px;background:var(--beige);display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:12px}
+  .plan h3{font-size:1.15rem;margin-bottom:6px}
+  .plan p{font-size:.92rem;color:var(--muted)}
+  .plan .from{font-size:.85rem;font-weight:800;color:var(--beige-deep);margin-top:10px}
+  .offer{font-size:.85rem;font-weight:700;background:var(--beige);border-radius:12px;padding:12px 16px;display:inline-block}
+
+  .calc{background:var(--white);border-radius:20px;box-shadow:0 24px 60px rgba(20,24,31,.16);border:1px solid var(--line);padding:30px}
+  .calc h3{font-size:1.2rem}
+  .calc p.small{font-size:.82rem;color:var(--soft);margin:4px 0 18px}
+  .segs{display:grid;grid-template-columns:1fr 1fr;background:var(--cream);border:1.5px solid #E4DAC4;border-radius:12px;padding:4px;gap:4px;margin-bottom:6px}
+  .segs button{border:0;background:transparent;font:inherit;font-weight:800;font-size:.92rem;padding:11px;border-radius:9px;cursor:pointer;color:var(--soft)}
+  .segs button[aria-pressed="true"]{background:var(--ink);color:#fff}
+  .calc label{display:block;font-size:.78rem;font-weight:700;margin:14px 0 6px}
+  .calc select{width:100%;padding:12px;border-radius:10px;border:1.5px solid #E4DAC4;background:var(--cream);font:inherit;font-weight:600;color:var(--ink)}
+  .calcout{margin-top:22px;background:var(--ink);color:var(--cream);border-radius:16px;padding:22px 24px;text-align:center}
+  .calcout .num{font-size:clamp(2rem,4.5vw,2.7rem);font-weight:800;letter-spacing:-0.02em;color:#fff}
+  .calcout .per{font-size:.85rem;font-weight:700;color:var(--beige)}
+  .calcout .sub{font-size:.82rem;color:#B7BCC8;margin-top:6px}
+  .calc .btn{width:100%;margin-top:16px}
+  .ph-note{display:inline-block;margin-top:14px;font-size:.74rem;font-weight:700;color:#8A6D3B;background:var(--cream);border:1.5px dashed #C9A96A;padding:6px 14px;border-radius:100px}
+
+  /* ============ SECTION 3 — one-off cleans ============ */
   .svcgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-  .svc{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:22px}
-  .svc h4{font-size:1rem;font-weight:800;margin-bottom:6px}
-  .svc p{font-size:.87rem;color:var(--muted)}
-  .svc .tag{display:inline-block;margin-top:12px;font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:var(--cream);border:1px solid var(--line);border-radius:100px;padding:4px 12px;color:var(--soft)}
+  .svc{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:24px}
+  .svc h4{font-size:1.02rem;font-weight:800;margin-bottom:6px}
+  .svc p{font-size:.88rem;color:var(--muted)}
+  .svc .tag{display:inline-block;margin-top:14px;font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:var(--cream);border:1px solid var(--line);border-radius:100px;padding:4px 12px;color:var(--soft)}
 
-  /* process — A's three steps, C's chunky look */
+  /* ============ SECTION 4 — process ============ */
   .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
   .step{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:28px}
   .step .n{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:var(--beige);font-weight:800;margin-bottom:14px}
   .step h4{font-size:1.05rem;font-weight:800;margin-bottom:8px}
   .step p{font-size:.92rem;color:var(--muted)}
 
-  /* coverage — static branded map image */
+  /* ============ SECTION 5 — coverage (static branded map) ============ */
   .coverage{background:var(--ink);color:#EFE9DB}
   .coverage h2{color:#fff}
   .coverage p.intro{color:#A9AEBB}
@@ -96,12 +126,11 @@
   .map-caption{margin-top:16px;font-size:.85rem;color:#A9AEBB;font-weight:600}
   .map-caption b{color:var(--beige)}
 
-  /* review — A's single quote, C's card treatment */
+  /* ============ SECTION 6 — reviews ============ */
   .review{max-width:760px;margin:0 auto;text-align:center;background:var(--white);border:1.5px dashed var(--beige-deep);border-radius:20px;padding:44px 34px}
   .review .stars{color:#A97F3F;font-weight:800;letter-spacing:.2em;font-size:1.05rem;margin-bottom:18px}
   .review blockquote{font-size:clamp(1.15rem,2.3vw,1.5rem);line-height:1.45;font-weight:700}
   .review .attr{margin-top:16px;font-size:.85rem;color:var(--soft)}
-  .ph-note{display:inline-block;margin-top:18px;font-size:.74rem;font-weight:700;color:#8A6D3B;background:var(--cream);border:1.5px dashed #C9A96A;padding:6px 14px;border-radius:100px}
 
   .final{background:var(--beige)}
   .final .wrap{padding:80px 22px;text-align:center}
@@ -116,7 +145,7 @@
 
   @media (max-width:900px){
     .hero .wrap{grid-template-columns:1fr;gap:40px;padding-top:52px}
-    .split,.steps{grid-template-columns:1fr}
+    .comgrid,.plansgrid,.steps{grid-template-columns:1fr}
     .svcgrid{grid-template-columns:1fr}
     .navlinks{display:none}
     .sticky-cta{display:block}
@@ -132,7 +161,7 @@
     <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3a17 17 0 1 0 12.02 29.02l-4.6-4.6A10.5 10.5 0 1 1 20 9.5c2.9 0 5.52 1.17 7.42 3.08l4.6-4.6A17 17 0 0 0 20 3z" fill="#14181F"/><circle cx="20" cy="20" r="7" fill="#14181F"/></svg>
     <span>WHITE DOT<small>CLEANING · NORTH LONDON</small></span>
   </a>
-  <div class="navlinks"><a href="#blocks">For blocks</a><a href="#services">All services</a><a href="#process">How it works</a><a href="#coverage">Coverage</a></div>
+  <div class="navlinks"><a href="#communal">Communal areas</a><a href="#plans">Plans &amp; prices</a><a href="#oneoff">One-off cleans</a><a href="#process">How it works</a><a href="#coverage">Coverage</a><a href="#reviews">Reviews</a></div>
   <a class="btn" href="tel:07500216225">📞 07500 216 225</a>
 </div></nav>
 
@@ -141,7 +170,7 @@
     <span class="kicker"><i></i>North London · Residential blocks &amp; offices</span>
     <h1>Communal areas, cleaned like clockwork.</h1>
     <p class="lead">White Dot keeps residential blocks and offices across North London spotless on a fixed monthly schedule — with the vetting, insurance and reporting that property managers actually check for.</p>
-    <div class="ctas"><a class="btn" href="#quote">Request a free site visit</a><a class="btn outline" href="#blocks">See monthly plans</a></div>
+    <div class="ctas"><a class="btn" href="#quote">Request a free site visit</a><a class="btn outline" href="#plans">Get an instant price</a></div>
     <div class="proof"><span>7 × five-star Google reviews</span><span>Fixed monthly pricing</span><span>North London only</span></div>
   </div>
   <aside class="card" id="quote" aria-label="Quote request">
@@ -166,43 +195,98 @@
   <span>DBS-checked team</span><span>£5m public liability</span><span>Employers’ liability</span><span>Vetted staff</span><span>COSHH awareness</span>
 </div></div>
 
-<section class="blk" id="blocks"><div class="wrap">
-  <h2>Built for buildings. Priced for households.</h2>
-  <p class="intro">Two ways we work — contracted communal cleaning for blocks, and simple monthly plans for homes and offices.</p>
-  <div class="split">
-    <div class="panel feature">
-      <div class="em">🏢</div>
-      <h3>Property managers &amp; blocks</h3>
-      <p>Lobbies, stairwells, lifts, bin stores and car parks on a contracted schedule — plus maintenance-issue reporting from every visit, so you hear about the broken light before the residents do.</p>
-      <ul><li>Fixed monthly contract, scheduled visits</li><li>Site-specific cleaning specification</li><li>Photo log &amp; issue reporting each visit</li></ul>
-      <div class="price">Quoted per building — always after a free site visit</div>
-      <a class="btn" href="#quote">Book the site visit</a>
+<!-- ============ SECTION 1 · Communal areas cleaning ============ -->
+<section class="blk communal" id="communal"><div class="wrap">
+  <span class="kicker lt"><i></i>Section for property managers &amp; freeholders</span>
+  <h2>Communal areas cleaning</h2>
+  <p class="intro">Lobbies, stairwells, lifts, bin stores and car parks on a contracted schedule — with the paperwork and reporting a managing agent actually needs. Every contract starts with a free site visit.</p>
+  <div class="comgrid">
+    <div class="comcard">
+      <h3>What property managers get</h3>
+      <ul>
+        <li><b>Fixed monthly contract</b> — scheduled visits, one clear invoice, no metering</li>
+        <li><b>Site-specific cleaning specification</b> — agreed at the site visit, checked every clean</li>
+        <li><b>Photo log after every visit</b> — proof the work happened, sent to your inbox</li>
+        <li><b>DBS-checked, vetted &amp; uniformed team</b> — the same faces on your building</li>
+        <li><b>£5m public liability + employers’ liability</b> — certificates supplied for your records</li>
+        <li><b>COSHH-aware products &amp; method statements</b> — on request for your compliance file</li>
+      </ul>
     </div>
-    <div class="panel">
-      <div class="em">🏠</div>
-      <h3>Homes &amp; offices — monthly plans</h3>
-      <p>The same vetted team, on a plan that repeats itself. One visit or four a month; we bring the products, you stop thinking about it.</p>
-      <ul><li>Home plans from <b>£XX/visit</b>*</li><li>Office plans from <b>£XX/visit</b>*</li><li>Introduction offer for new monthly clients</li></ul>
-      <div class="price">*Example pricing — final figures to be confirmed</div>
-      <a class="btn outline" href="#quote">Get a plan price</a>
+    <div class="comcard maint">
+      <h3>🔧 Maintenance reporting — included</h3>
+      <p>We’re in your building every week, so we see what you can’t. Every visit ends with an issue report — you hear about problems before the residents do.</p>
+      <div class="ex"><b>What we flag</b>Broken lights &amp; timers · leaks and damp patches · damaged doors, locks &amp; entry systems · fly-tipping and bulk rubbish · anything unsafe</div>
+      <a class="btn" href="#quote">Book a site visit</a>
+    </div>
+  </div>
+  <div class="comfoot">Communal contracts are quoted per building — always after a free, no-obligation site visit.</div>
+</div></section>
+
+<!-- ============ SECTION 2 · Homes & offices — plans + instant price ============ -->
+<section class="blk" id="plans"><div class="wrap">
+  <span class="kicker"><i></i>Homes &amp; offices</span>
+  <h2>Monthly plans, with the price up front.</h2>
+  <p class="intro">The same vetted team, on a plan that repeats itself — for your home or your workplace. Pick your details and see an instant monthly price.</p>
+  <div class="plansgrid">
+    <div>
+      <div class="plan">
+        <div class="em">🏠</div>
+        <h3>Home monthly plans</h3>
+        <p>Weekly, fortnightly or monthly visits by the same trusted cleaner. We bring the products — you stop thinking about it.</p>
+        <div class="from">From £XX per visit*</div>
+      </div>
+      <div class="plan">
+        <div class="em">🏢</div>
+        <h3>Office monthly plans</h3>
+        <p>Keep the workplace client-ready with out-of-hours or early-morning visits. Desks, kitchens, meeting rooms and washrooms.</p>
+        <div class="from">From £XX per visit*</div>
+      </div>
+      <span class="offer">🎁 Introduction offer for new monthly clients</span>
+      <br><span class="ph-note">*Example pricing — Odysseas sets the real rates before launch</span>
+    </div>
+    <div class="calc" id="calculator" aria-label="Instant price calculator">
+      <h3>Instant price calculator</h3>
+      <p class="small">A guide price in five seconds — confirmed after your first visit.</p>
+      <div class="segs" role="group" aria-label="Plan type">
+        <button type="button" id="seg-home" aria-pressed="true" onclick="setMode('home')">🏠 Home</button>
+        <button type="button" id="seg-office" aria-pressed="false" onclick="setMode('office')">🏢 Office</button>
+      </div>
+      <div id="fields-home">
+        <label for="c-bed">Bedrooms</label>
+        <select id="c-bed" onchange="calc()"><option value="1">1 bedroom</option><option value="2" selected>2 bedrooms</option><option value="3">3 bedrooms</option><option value="4">4 bedrooms</option><option value="5">5+ bedrooms</option></select>
+        <label for="c-freq">How often?</label>
+        <select id="c-freq" onchange="calc()"><option value="4" selected>Every week</option><option value="2">Every two weeks</option><option value="1">Once a month</option></select>
+      </div>
+      <div id="fields-office" hidden>
+        <label for="c-size">Office size</label>
+        <select id="c-size" onchange="calc()"><option value="s" selected>Small — up to ~100 m²</option><option value="m">Medium — 100–250 m²</option><option value="l">Large — 250–500 m²</option></select>
+        <label for="c-ofreq">Visits per week</label>
+        <select id="c-ofreq" onchange="calc()"><option value="1" selected>Once a week</option><option value="2">Twice a week</option><option value="3">Three times a week</option><option value="5">Every weekday</option></select>
+      </div>
+      <div class="calcout" aria-live="polite">
+        <div class="num" id="c-month">£—</div>
+        <div class="per">per month</div>
+        <div class="sub" id="c-detail"></div>
+      </div>
+      <a class="btn" href="#quote">Lock it in — book a free first visit</a>
+      <span class="ph-note">Example rates for the demo — not real prices yet</span>
     </div>
   </div>
 </div></section>
 
-<section class="blk" id="services" style="padding-top:0"><div class="wrap">
-  <h2>Every service we offer</h2>
-  <p class="intro">The full list — nothing hidden. If it’s in North London, we clean it.</p>
+<!-- ============ SECTION 3 · One-off cleaning ============ -->
+<section class="blk" id="oneoff" style="padding-top:0"><div class="wrap">
+  <span class="kicker"><i></i>One-off cleans</span>
+  <h2>The big one-off jobs.</h2>
+  <p class="intro">Not everything needs a plan. For moves, refurbishments and resets, we do it once and do it properly.</p>
   <div class="svcgrid">
-    <div class="svc"><h4>Communal areas — blocks</h4><p>Lobbies, stairwells, lifts, bin stores, car parks on a fixed contract.</p><span class="tag">Site-visit quote</span></div>
-    <div class="svc"><h4>Office cleaning</h4><p>Regular monthly plans that keep the workplace client-ready.</p><span class="tag">From £XX*</span></div>
-    <div class="svc"><h4>Home cleaning</h4><p>Monthly plans with the same vetted team, products included.</p><span class="tag">From £XX*</span></div>
-    <div class="svc"><h4>End of tenancy</h4><p>Deposit-grade cleans checked against agency checklists.</p><span class="tag">On request</span></div>
-    <div class="svc"><h4>Deep cleaning</h4><p>One-off resets for kitchens, bathrooms and long-neglected corners.</p><span class="tag">On request</span></div>
-    <div class="svc"><h4>Post-construction</h4><p>Dust-free handovers after builders and refurbishments.</p><span class="tag">On request</span></div>
-    <div class="svc"><h4>Maintenance reporting</h4><p>We flag broken lights, leaks and damage on every block visit.</p><span class="tag">Included with contracts</span></div>
+    <div class="svc"><h4>End of tenancy</h4><p>Deposit-grade cleans checked against agency checklists — for tenants and landlords alike.</p><span class="tag">Quoted on request</span></div>
+    <div class="svc"><h4>Deep cleaning</h4><p>A one-off reset for kitchens, bathrooms and every long-neglected corner of the property.</p><span class="tag">Quoted on request</span></div>
+    <div class="svc"><h4>Post-construction</h4><p>Dust-free handovers after builders, renovations and refurbishments — ready to occupy.</p><span class="tag">Quoted on request</span></div>
   </div>
 </div></section>
 
+<!-- ============ SECTION 4 · Three steps ============ -->
 <section class="blk" id="process" style="padding-top:0"><div class="wrap">
   <h2>Three steps to a spotless building</h2>
   <p class="intro">How every contract starts — no obligation until you’ve seen the written quote.</p>
@@ -213,14 +297,16 @@
   </div>
 </div></section>
 
+<!-- ============ SECTION 5 · Areas we cover ============ -->
 <section class="blk coverage" id="coverage"><div class="wrap">
   <h2>North London. That’s the whole point.</h2>
   <p class="intro">We only take on properties we can reach fast and service properly — so we stay local by design. If your building is in North London, you’re in.</p>
-  <img class="covmap-img" src="coverage-map.jpg" alt="Map of White Dot Cleaning's North London coverage area, with pins on Potters Bar, Barnet, Enfield, Whetstone, Finchley, Muswell Hill, Crouch End, Highgate, Tottenham, Walthamstow and Hampstead" width="1200" height="1453">
-  <p class="map-caption">Pins mark our patch — <b>Potters Bar · Barnet · Enfield · Whetstone · Finchley · Muswell Hill · Crouch End · Highgate · Tottenham · Walthamstow · Hampstead</b> and everywhere in between.</p>
+  <img class="covmap-img" src="coverage-map.jpg" alt="Map of White Dot Cleaning's North London coverage area, with pins on Potters Bar, Barnet, Enfield, Whetstone, Finchley, Muswell Hill, Wood Green, Crouch End, Highgate, Tottenham, Walthamstow and Hampstead" width="1200" height="1453">
+  <p class="map-caption">Pins mark our patch — <b>Potters Bar · Barnet · Enfield · Whetstone · Finchley · Muswell Hill · Wood Green · Crouch End · Highgate · Tottenham · Walthamstow · Hampstead</b> and everywhere in between.</p>
 </div></section>
 
-<section class="blk"><div class="wrap">
+<!-- ============ SECTION 6 · Reviews ============ -->
+<section class="blk" id="reviews"><div class="wrap">
   <div class="review">
     <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
     <blockquote>“Your real Google review appears here, word for word, with the reviewer’s first name — seven five-star reviews and counting.”</blockquote>
@@ -241,5 +327,50 @@
 </div></footer>
 
 <div class="sticky-cta"><a href="#quote">Request a free site visit</a></div>
+
+<script>
+/* Instant price calculator — DEMO RATES ONLY.
+   Real pricing to be supplied by Odysseas; everything lives in this one object. */
+var RATES = {
+  home: {
+    perVisit: {1: 45, 2: 55, 3: 65, 4: 80, 5: 95},      // £ per visit by bedrooms
+    freqDiscount: {4: 0.10, 2: 0.05, 1: 0}               // discount by visits/month
+  },
+  office: {
+    perVisit: {s: 55, m: 85, l: 125},                    // £ per visit by size
+    freqDiscount: {1: 0, 2: 0.05, 3: 0.08, 5: 0.12}      // discount by visits/week
+  }
+};
+var mode = 'home';
+function setMode(m){
+  mode = m;
+  document.getElementById('seg-home').setAttribute('aria-pressed', m === 'home');
+  document.getElementById('seg-office').setAttribute('aria-pressed', m === 'office');
+  document.getElementById('fields-home').hidden = (m !== 'home');
+  document.getElementById('fields-office').hidden = (m !== 'office');
+  calc();
+}
+function calc(){
+  var perVisit, visitsPerMonth, detail;
+  if (mode === 'home') {
+    var bed = document.getElementById('c-bed').value;
+    var freq = parseInt(document.getElementById('c-freq').value, 10);
+    perVisit = RATES.home.perVisit[bed] * (1 - RATES.home.freqDiscount[freq]);
+    visitsPerMonth = freq;
+    detail = (bed === '5' ? '5+' : bed) + '-bed home · ' + freq + (freq === 1 ? ' visit' : ' visits') + '/month · ~£' + Math.round(perVisit) + ' per visit';
+  } else {
+    var size = document.getElementById('c-size').value;
+    var perWeek = parseInt(document.getElementById('c-ofreq').value, 10);
+    perVisit = RATES.office.perVisit[size] * (1 - RATES.office.freqDiscount[perWeek]);
+    visitsPerMonth = Math.round(perWeek * 4.33);
+    var sizeName = {s: 'Small', m: 'Medium', l: 'Large'}[size];
+    detail = sizeName + ' office · ' + perWeek + '×/week (~' + visitsPerMonth + ' visits/month) · ~£' + Math.round(perVisit) + ' per visit';
+  }
+  var month = Math.round(perVisit * visitsPerMonth);
+  document.getElementById('c-month').textContent = '£' + month;
+  document.getElementById('c-detail').textContent = detail;
+}
+calc();
+</script>
 </body>
 </html>
